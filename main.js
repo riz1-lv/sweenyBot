@@ -9,8 +9,8 @@ client.on('ready', () => {
 client.on('message', message => {
     
     if (checkSweeney(message.content) || message.content === 'sydnee') {
-        const attachment = new MessageAttachment('https://tenor.com/view/sydney-sweeney-sydney-sweeney-euphoria-ice-cream-gif-14906880');
-      message.channel.send(attachment);
+        
+      message.channel.send('https://tenor.com/view/sydney-sweeney-sydney-sweeney-euphoria-ice-cream-gif-14906880');
     }
 });
   
