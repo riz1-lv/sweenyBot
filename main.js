@@ -12,6 +12,9 @@ client.on('message', message => {
         
       message.channel.send('https://tenor.com/view/sydney-sweeney-sydney-sweeney-euphoria-ice-cream-gif-14906880');
     }
+    if (message.content === 'ping') {
+        message.channel.send("pong");
+    }
 });
   
 
@@ -22,7 +25,6 @@ function checkSweeney(msg) {
         }
             
     }
-    message.channel.send("test");
     return false;
 }
 
