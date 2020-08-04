@@ -8,12 +8,12 @@ client.on('ready', () => {
 });
 client.on('message', message => {
     
-    if (checkSweeney(message.content) || message.content === 'sydnee') {
+    if (checkSweeney(message.content)) {
         
       message.channel.send('https://tenor.com/view/sydney-sweeney-sydney-sweeney-euphoria-ice-cream-gif-14906880');
     }
-    if (message.content === 'ping') {
-        message.channel.send("pong");
+    if (message.content === '!jennifer') {
+        message.channel.send('https://imgur.com/r/natureisfuckinglit/PtJvF3Q');
     }
 });
   
