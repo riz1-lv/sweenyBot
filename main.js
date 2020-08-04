@@ -8,21 +8,22 @@ client.on('ready', () => {
 });
 client.on('message', message => {
     
-    if (checkSweeney(message.content)) {
+    if (checkSweeney(message.content) || message.content === 'sydnee') {
         const attachment = new MessageAttachment('https://tenor.com/view/sydney-sweeney-sydney-sweeney-euphoria-ice-cream-gif-14906880');
       message.channel.send(attachment);
     }
 });
   
 
-function checkSweeney(message) {
+function checkSweeney(msg) {
     for (let i = 0; i < sweenyWords.length; i++){
-        if (message.toUpperCase() === sweenyWords[i]) {
+        if (msg.toUpperCase() === sweenyWords[i]) {
             return true;
         }
             
     }
-    
+    message.channel.send("test");
+    return false;
 }
 
 client.login(process.env.BOT_TOKEN);
