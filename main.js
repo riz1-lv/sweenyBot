@@ -10,13 +10,13 @@ client.on('message', message => {
     
     if (checkSweeney(message.content)) {
         rnd = Math.floor(Math.random() * 101); 
-        if (rnd > 50) {
+        if (rnd >= 50) {
             message.channel.send('https://tenor.com/view/sydney-sweeney-sydney-sweeney-euphoria-ice-cream-gif-14906880');
         }
-       /*  if (25 < rnd < 50) {
+         if (25 < rnd < 50) {
             message.channel.send('https://tenor.com/view/euphoria-cassie-howard-sydney-sweeney-hat-tongue-out-gif-14754462');
-       }*/
-        if (rnd < 25) {
+       }
+        if (rnd <= 25) {
             message.channel.send('https://tenor.com/view/hey-you-how-you-doing-lets-go-dance-cheerleader-gif-15098613');
         }
     }
