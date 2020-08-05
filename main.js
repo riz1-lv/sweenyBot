@@ -10,7 +10,7 @@ client.on('message', message => {
     
     if (checkSweeney(message.content)) {
         
-      message.channel.send('https://tenor.com/view/sydney-sweeney-sydney-sweeney-euphoria-ice-cream-gif-14906880');
+      message.channel.send('https://rb.gy/jyn7b8');
     }
     if (message.content.includes('!jen')) {
         message.channel.send('https://i.redd.it/sywglt58ngg01.jpg');
