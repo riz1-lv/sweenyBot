@@ -22,6 +22,8 @@ client.on('message', message => {
     }
     if (message.content.includes('!jen')) {
         message.channel.send('https://i.redd.it/sywglt58ngg01.jpg');
+    if (message.content.includes('!bren')) {
+        message.channel.send('https://i.redd.it/75qvogprud341.jpg');   
     }
 });
 
