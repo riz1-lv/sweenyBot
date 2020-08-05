@@ -1,8 +1,12 @@
 {
   "name": "discord-bots",
   "version": "1.0.0",
-  "description": "sweenybot",
+  "description": "sweeneybot",
   "main": "main.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/riz1-lv/sweenyBot.git"
+},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
