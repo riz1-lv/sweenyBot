@@ -12,7 +12,7 @@ client.on('message', message => {
         
       message.channel.send('https://tenor.com/view/sydney-sweeney-sydney-sweeney-euphoria-ice-cream-gif-14906880');
     }
-    if (message.content === '!jennifer') {
+    if (message.content.includes('!jennifer')) {
         message.channel.send('https://i.redd.it/sywglt58ngg01.jpg');
     }
 });
