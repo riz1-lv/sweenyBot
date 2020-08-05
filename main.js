@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 
 const client = new Discord.Client();
-const sweenyWords = ["SYDNEY SWEENEY", "SWEENEY", "SYDNEY",'SYD'];
+const sweenyWords = ["SYDNEY SWEENEY", "SWEENEY", "SYDNEY",'SYD', 'SIDNI', 'SDYNEY' ];
 
 client.on('ready', () => {
     console.log('SweeneyBot is ready');
@@ -12,7 +12,7 @@ client.on('message', message => {
         
       message.channel.send('https://tenor.com/view/sydney-sweeney-sydney-sweeney-euphoria-ice-cream-gif-14906880');
     }
-    if (message.content.includes('!jennifer')) {
+    if (message.content.includes('!jen')) {
         message.channel.send('https://i.redd.it/sywglt58ngg01.jpg');
     }
 });
@@ -20,7 +20,7 @@ client.on('message', message => {
 
 function checkSweeney(msg) {
     for (let i = 0; i < sweenyWords.length; i++){
-        if (msg.toUpperCase() === sweenyWords[i]) {
+        if (msg.toUpperCase().includes(sweenyWords[i])) {
             return true;
         }
             
