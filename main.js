@@ -28,7 +28,21 @@ client.on('message', message => {
     }
 });
 
-  
+client.on('voiceStateUpdate', (oldState, newState) => {
+    let oldVoice = oldState.channelID
+    let newVoice = newState.channelID
+    if (oldVoice != newVoice) {
+        if (oldVoice == null) {
+            message.channel.send(`User Joined`);
+           }     
+        else if (newVoice == null) {
+            message.channel.send(`User Left`);
+        }
+        else {
+            message.channel.send(`User left switced Channels`);
+        }
+    }
+})
 
 function checkSweeney(msg) {
     if (msg.includes('https://'))
