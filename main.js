@@ -29,20 +29,22 @@ client.on('message', message => {
 });
 
 client.on('voiceStateUpdate', (oldState, newState) => {
-    let oldVoice = oldState.channelID
-    let newVoice = newState.channelID
+    let oldVoice = oldState.channelID;
+    let newVoice = newState.channelID;
+    const channel = client.channels.cache.get('CHANNEL ID');
     if (oldVoice != newVoice) {
         if (oldVoice == null) {
-            message.channel.send(`User Joined`);
-           }     
+            client.on('message', message => { message.channel.send(`User Joined`); });
+            console.log("user joined")
+        }
         else if (newVoice == null) {
-            message.channel.send(`User Left`);
+            console.log('user left')
         }
         else {
-            message.channel.send(`User left switced Channels`);
+            console.log(`User left switced Channels`);
         }
     }
-})
+});
 
 function checkSweeney(msg) {
     if (msg.includes('https://'))
@@ -57,4 +59,5 @@ function checkSweeney(msg) {
     return false;
 }
 
-client.login(process.env.BOT_TOKEN);
+//client.login(process.env.BOT_TOKEN);
+client.login('NzM5OTUzMjcwMTg5MDY0NDAz.Xyh9Lw.-anY1SB7nPwLClqoq58LviK08Ck');
