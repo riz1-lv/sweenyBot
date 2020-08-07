@@ -59,5 +59,4 @@ function checkSweeney(msg) {
     return false;
 }
 
-//client.login(process.env.BOT_TOKEN);
-client.login('NzM5OTUzMjcwMTg5MDY0NDAz.Xyh9Lw.-anY1SB7nPwLClqoq58LviK08Ck');
+client.login(process.env.BOT_TOKEN);
