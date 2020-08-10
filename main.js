@@ -73,5 +73,4 @@ function checkSweeney(msg) {
 function deleteLast(channel) {
     channel.messages.fetch(client.user.lastMessageID).then(msg => msg.delete());
 }
-//client.login(process.env.BOT_TOKEN);
-client.login('NzM5OTUzMjcwMTg5MDY0NDAz.Xyh9Lw.whorpJ5Lgkrd6rxzI01I8X0_hqU');
+client.login(process.env.BOT_TOKEN);
