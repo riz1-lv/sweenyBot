@@ -26,22 +26,34 @@ client.on('message', message => {
     if (message.content.includes('!bren')) {
         message.channel.send('https://i.redd.it/75qvogprud341.jpg');
     }
+    if (message.content.includes('!l')) {
+        message.channel.send('https://tenor.com/view/jason-sleeping-bag-gif-12792005');
+    }
 });
 
 client.on('voiceStateUpdate', (oldState, newState) => {
+    const lastMessageChannel = oldState.member.lastMessageChannelID;
+    var channel = oldState.member.guild.channels.cache.find(channel => channel.id === lastMessageChannel)
     let oldVoice = oldState.channelID;
     let newVoice = newState.channelID;
-    const channel = client.channels.cache.get('CHANNEL ID');
-    if (oldVoice != newVoice) {
-        if (oldVoice == null) {
-            client.on('message', message => { message.channel.send(`User Joined`); });
-            console.log("user joined")
-        }
-        else if (newVoice == null) {
-            console.log('user left')
-        }
-        else {
-            console.log(`User left switced Channels`);
+    if (channel != null) {
+        if (oldVoice != newVoice) {
+            if (oldVoice == null) {
+                channel.send(`${newState.member.nickname} has joined ${newState.channel.name}`, { tts: true });
+                console.log('user joined')
+
+                setTimeout(deleteLast, 4000, channel);
+            }
+            else if (newVoice == null) {
+                channel.send(`${newState.member.nickname} has left ${oldState.channel.name}`, { tts: true });
+                console.log('user left');
+                setTimeout(deleteLast, 4000, channel);
+            }
+            else {
+                channel.send(`${newState.member.nickname} switched from ${oldState.channel.name} to ${newState.channel.name} `, { tts: true });
+                console.log(`user switced Channels`);
+                setTimeout(deleteLast, 4000, channel);
+            }
         }
     }
 });
@@ -58,5 +70,8 @@ function checkSweeney(msg) {
     }
     return false;
 }
-
-client.login(process.env.BOT_TOKEN);
+function deleteLast(channel) {
+    channel.messages.fetch(client.user.lastMessageID).then(msg => msg.delete());
+}
+//client.login(process.env.BOT_TOKEN);
+client.login('NzM5OTUzMjcwMTg5MDY0NDAz.Xyh9Lw.whorpJ5Lgkrd6rxzI01I8X0_hqU');
