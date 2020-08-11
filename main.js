@@ -27,7 +27,8 @@ client.on('message', message => {
         message.channel.send('https://i.redd.it/75qvogprud341.jpg');
     }
     if (message.content.includes('!l')) {
-        message.channel.send('https://tenor.com/view/jason-sleeping-bag-gif-12792005');
+       // message.channel.send('https://tenor.com/view/jason-sleeping-bag-gif-12792005');
+        message.channel.send('https://cdn.discordapp.com/attachments/678464895477481509/742540993827438613/image0.jpg');
     }
 });
 
