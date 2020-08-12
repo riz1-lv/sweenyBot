@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 
 const client = new Discord.Client();
 const sweenyWords = ["SYDNEY SWEENEY", "SWEENEY", "SYDNEY",'SYD', 'SIDNI', 'SDYNEY' ];
-
+let voiceOn = false;
 client.on('ready', () => {
     console.log('SweeneyBot is ready');
 });
@@ -20,6 +20,14 @@ client.on('message', message => {
             message.channel.send('https://tenor.com/view/hey-you-how-you-doing-lets-go-dance-cheerleader-gif-15098613');
         }
     }
+    if (message.content.includes('!voiceon')) {
+        voiceon = true;
+        message.channel.send('voice channel tts is on')
+    }
+    if (message.content.includes('!voiceoff')) {
+        voiceon = false;
+        message.channel.send('voice channel tts is off')
+    }
     if (message.content.includes('!jen')) {
         message.channel.send('https://i.redd.it/sywglt58ngg01.jpg');
     }
@@ -30,34 +38,38 @@ client.on('message', message => {
        // message.channel.send('https://tenor.com/view/jason-sleeping-bag-gif-12792005');
         message.channel.send('https://cdn.discordapp.com/attachments/678464895477481509/742540993827438613/image0.jpg');
     }
-});
-
-client.on('voiceStateUpdate', (oldState, newState) => {
-    const lastMessageChannel = oldState.member.lastMessageChannelID;
-    var channel = oldState.member.guild.channels.cache.find(channel => channel.id === lastMessageChannel)
-    let oldVoice = oldState.channelID;
-    let newVoice = newState.channelID;
-    if (channel != null) {
-        if (oldVoice != newVoice) {
-            if (oldVoice == null) {
-                channel.send(`${newState.member.nickname} has joined ${newState.channel.name}`, { tts: true });
-                console.log('user joined')
-
-                setTimeout(deleteLast, 4000, channel);
-            }
-            else if (newVoice == null) {
-                channel.send(`${newState.member.nickname} has left ${oldState.channel.name}`, { tts: true });
-                console.log('user left');
-                setTimeout(deleteLast, 4000, channel);
-            }
-            else {
-                channel.send(`${newState.member.nickname} switched from ${oldState.channel.name} to ${newState.channel.name} `, { tts: true });
-                console.log(`user switced Channels`);
-                setTimeout(deleteLast, 4000, channel);
-            }
-        }
+    if (message.content.includes('!shan')) {
+        message.channel.send('');
     }
 });
+while (voiceOn) {
+    client.on('voiceStateUpdate', (oldState, newState) => {
+        const lastMessageChannel = oldState.member.lastMessageChannelID;
+        var channel = oldState.member.guild.channels.cache.find(channel => channel.id === lastMessageChannel)
+        let oldVoice = oldState.channelID;
+        let newVoice = newState.channelID;
+        if (channel != null) {
+            if (oldVoice != newVoice) {
+                if (oldVoice == null) {
+                    channel.send(`${newState.member.nickname} has joined ${newState.channel.name}`, { tts: true });
+                    console.log('user joined')
+
+                    setTimeout(deleteLast, 4000, channel);
+                }
+                else if (newVoice == null) {
+                    channel.send(`${newState.member.nickname} has left ${oldState.channel.name}`, { tts: true });
+                    console.log('user left');
+                    setTimeout(deleteLast, 4000, channel);
+                }
+                else {
+                    channel.send(`${newState.member.nickname} switched from ${oldState.channel.name} to ${newState.channel.name} `, { tts: true });
+                    console.log(`user switced Channels`);
+                    setTimeout(deleteLast, 4000, channel);
+                }
+            }
+        }
+    });
+}
 
 function checkSweeney(msg) {
     if (msg.includes('https://'))
